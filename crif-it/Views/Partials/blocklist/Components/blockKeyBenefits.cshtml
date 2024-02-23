@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Crif.It.Models;
+@using Crif.It.Utils;
+@{
+    ContentModels.BlockKeyBenefits content = (ContentModels.BlockKeyBenefits)Model.Content;
+    ContentModels.BlockGeneralBlockSettings settings = (ContentModels.BlockGeneralBlockSettings)Model.Settings;
+}
+
+<section class="cards-block" id="@settings?.AnchorID">
+    <div class="container-lg">
+        @if (!string.IsNullOrEmpty((string?)content.Value("Title")))
+        {
+        <div class="row justify-content-center">
+            <div class="col-7 col-lg-12">
+                <h2 class="h2 text-center pb-lg-5 mb-lg-4">@content.Value("Title")</h2>
+            </div>
+        </div>
+        }
+        <div class="row g-mega g-overflow ">
+            @if (content?.KeyBenefitsList != null)
+            {
+                @foreach (var card in content.KeyBenefitsList)
+                {
+                    var listContent = (ContentModels.BlockCardKeyBenefits)card.Content;
+
+                    <div class="col-12 col-lg-6 benefit">
+                        <div class="custom-card shadow fade-in-box">
+                            <div class="card-body">
+                                <div class="icon-wrapper"><img src="@listContent.Icon?.Url()" alt="@listContent.Icon?.Value("alt")"></div>
+                                <h4 class="h3 card-title">@listContent.Title</h4>
+                                @{
+                                    string? text = listContent.Text;
+                                    if (text != "")
+                                    {
+                                            <p>@text</p>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

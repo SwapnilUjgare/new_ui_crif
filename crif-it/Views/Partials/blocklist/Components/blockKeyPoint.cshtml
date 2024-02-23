@@ -1,0 +1,67 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Crif.It.Models;
+@using Crif.It.Utils;
+@{
+    ContentModels.BlockKeyPoint content = (ContentModels.BlockKeyPoint)Model.Content;
+    ContentModels.BlockKeyPointSettings settings = (ContentModels.BlockKeyPointSettings)Model.Settings;
+    var bg = (settings.NoBackground) ? "bg-white" : "";
+}
+
+<section class="mixed-content @(bg) " id="@settings?.AnchorID">
+    <div class="container-lg">
+        @if (!string.IsNullOrEmpty(content.Title))
+        {
+        <div class="row pb-4">
+            <div class="col-12">
+                <h2 class="h2 text-center">@content.Title</h2>
+            </div>
+        </div>
+        }
+        @if (content.KeyPoints != null && content.KeyPoints.Any())
+        {
+            foreach (var item in content.KeyPoints)
+            {
+                var itemContent = (ContentModels.BlockTextAndImage)item.Content;
+                @if (itemContent.ImagePosition == "right")
+                {
+                    <div class="content-row right">
+                        <div class="caption-text">
+                            <h3 class="h3">@itemContent.Title</h3>
+                            @Html.Raw(itemContent.Text)
+                            @if(!string.IsNullOrEmpty(@itemContent?.CallToAction?.Url))
+                            {
+                                <a title="@itemContent?.CallToAction?.Name" href="@itemContent?.CallToAction?.Url" target="@itemContent?.CallToAction?.Target" data-link-type="cta" data-link="@itemContent?.CallToAction?.Name" data-section="@content.Title">@itemContent?.CallToAction?.Name</a>                                
+                            }
+                        </div>
+                        @if (itemContent?.Image?.Url() != null)
+                        {
+                            <div class="d-none d-lg-block key-point-img pop-fade-in">
+                                <img src="@itemContent.Image?.Url()" alt="@HtmlUtils.GetImageAlt(itemContent.Image)">
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="content-row left">
+                        @if (itemContent.Image?.Url() != null)
+                        {
+                            <div class="d-none d-lg-block key-point-img pop-fade-in">
+                                <img src="@itemContent.Image?.Url()" alt="@HtmlUtils.GetImageAlt(itemContent.Image)">
+                            </div>
+                        }
+                        <div class="caption-text">
+                            <h3 class="h3">@itemContent.Title</h3>
+                            @Html.Raw(itemContent.Text)
+                            @if (!string.IsNullOrEmpty(@itemContent?.CallToAction?.Url))
+                            {
+                                <a title="@itemContent?.CallToAction?.Name" href="@itemContent?.CallToAction?.Url" target="@itemContent?.CallToAction?.Target" data-link-type="cta" data-link="@itemContent?.CallToAction?.Name" data-section="@content.Title">@itemContent?.CallToAction?.Name</a>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</section>
+

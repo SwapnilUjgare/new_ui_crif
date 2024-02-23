@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Crif.It.Models;
+@using Crif.It.Utils;
+@using System.Web;
+@{
+	ContentModels.BlockListCardIconaTitoloDescrizione content = (ContentModels.BlockListCardIconaTitoloDescrizione)Model.Content;
+	var settings = (ContentModels.BlockListCardIconaTitoloDescrizioneSettings)Model.Settings;
+	var background = settings.BackgroundGrigio ? "bg" : "";
+}
+<section class="cards-block @background" data-section="card-icona-testo">
+	<div class="container-lg">
+		@if (!string.IsNullOrEmpty(content.TitoloSezione))
+		{
+			<div class="row justify-content-center">
+				<div class="col-7 col-lg-12">
+					<h2 class="h2 text-center pb-lg-5 mb-lg-4">@content.TitoloSezione</h2>
+				</div>
+			</div>
+		}
+		<div class="row g-mega g-overflow">
+			@foreach (var card in content?.ListaCard)
+			{
+				ContentModels.BlockCardIconaTestoDescrizione cardContent = (ContentModels.BlockCardIconaTestoDescrizione)card.Content;
+				<div class="col-12 col-lg-6">
+					<div class="custom-card industry shadow fade-in-box">
+						<div class="card-body">
+							@if (cardContent.IconaCard != null)
+							{
+								<div class="icon-wrapper">
+									<img src="@cardContent.IconaCard?.Url()" alt="@HtmlUtils.GetImageAlt(cardContent.IconaCard)">
+								</div>
+							}
+
+							<h3 class="h3 card-title">@cardContent.TitoloCard</h3>
+							@if (cardContent.DescrizioneCard != "")
+							{
+								<p>@HtmlUtils.TextCut(@cardContent.DescrizioneCard)</p>
+							}
+							@if (cardContent.LinkCard != null)
+							{
+								@if (settings.CardCliccabile)
+								{
+									<a href="@cardContent.LinkCard.Url" class="stretched-link" target="@cardContent.LinkCard.Target" data-link-type="internal-link" data-link="@cardContent.TitoloCard" data-section="card-icona-testo"></a>
+								}
+								else
+								{
+									<a title="@cardContent.LinkCard.Name" href="@cardContent.LinkCard.Url" target="@cardContent.LinkCard.Target" class="more" data-link-type="internal-link" data-link="@cardContent.TitoloCard" data-section="card-icona-testo">@cardContent.LinkCard.Name</a>
+								}
+							}
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

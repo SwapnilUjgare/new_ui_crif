@@ -1,0 +1,8 @@
+﻿@using Crif.It.Models;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Crif.It.Utils;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlankPage>
+@{
+    Layout = "Master.cshtml";
+}
+@Html.GetBlockListHtml(Model.Blocks)

@@ -1,0 +1,394 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>crif_it</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <Compile Remove="umbraco\**" />
+    <Compile Remove="Views\Partials\Forms\Themes\default\**" />
+    <Content Remove="publish\**" />
+    <Content Remove="umbraco\**" />
+    <Content Remove="Views\Partials\Forms\Themes\default\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <EmbeddedResource Remove="umbraco\**" />
+    <EmbeddedResource Remove="Views\Partials\Forms\Themes\default\**" />
+    <None Remove="publish\**" />
+    <None Remove="umbraco\**" />
+    <None Remove="Views\Partials\Forms\Themes\default\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\assets\images\crif.in\service-1.svg" />
+    <Content Remove="wwwroot\assets\images\crif.in\service-2.svg" />
+    <Content Remove="wwwroot\assets\images\crif.in\service-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\ai-techiques.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-balance.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-block.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-decision.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-protect.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-recom.svg" />
+    <Content Remove="wwwroot\assets\images\icons\app-fraud-round-time.svg" />
+    <Content Remove="wwwroot\assets\images\icons\arrow-blue.svg" />
+    <Content Remove="wwwroot\assets\images\icons\arrow-white.svg" />
+    <Content Remove="wwwroot\assets\images\icons\chevron-down.svg" />
+    <Content Remove="wwwroot\assets\images\icons\chevron-right-double.svg" />
+    <Content Remove="wwwroot\assets\images\icons\circle-marker.svg" />
+    <Content Remove="wwwroot\assets\images\icons\comprehensive-picture.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-com-credit-1.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-com-credit-2.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-com-credit-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-commercial.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-consumer.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-microfinance.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-1.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-2.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-4.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-5.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-6.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-7.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-8.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-info-round-9.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-report.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-1.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-2.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-benefit-1.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-benefit-2.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-benefit-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\credit-score-benefit-4.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-institutes.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-largest-credit-bureau.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-license.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-made-in-india.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-security.svg" />
+    <Content Remove="wwwroot\assets\images\icons\feature-trust.svg" />
+    <Content Remove="wwwroot\assets\images\icons\fraud-detection.svg" />
+    <Content Remove="wwwroot\assets\images\icons\get-report-round-1.svg" />
+    <Content Remove="wwwroot\assets\images\icons\get-report-round-2.svg" />
+    <Content Remove="wwwroot\assets\images\icons\get-report-round-3.svg" />
+    <Content Remove="wwwroot\assets\images\icons\globe-icon.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-analytics.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-business-info.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-business-rules.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-business.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-businessCredit.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-collections-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-cosmo.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-credit-bureau-info.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-credit-risk-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-cust-aquit.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-deduplication-platform.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-dispute.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-envelope.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-external-data-connector.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-facebook.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-faq.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-fraud.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-individual.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-info.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-instagram.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-linkedIn.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-loan-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-member.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-meter.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-payment.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-personalCredit.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-planing.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-score-meter.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-sicurnet.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-solutions.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-spy.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-support.svg" />
+    <Content Remove="wwwroot\assets\images\icons\icon-twitter.svg" />
+    <Content Remove="wwwroot\assets\images\icons\minus.svg" />
+    <Content Remove="wwwroot\assets\images\icons\multi-variations.svg" />
+    <Content Remove="wwwroot\assets\images\icons\plus.svg" />
+    <Content Remove="wwwroot\assets\images\icons\raise-dispute.svg" />
+    <Content Remove="wwwroot\assets\images\icons\search-grey.svg" />
+    <Content Remove="wwwroot\assets\images\icons\search-icon.svg" />
+    <Content Remove="wwwroot\assets\images\icons\unlock-doors.svg" />
+    <Content Remove="wwwroot\assets\images\images\crif.in\service-1.svg" />
+    <Content Remove="wwwroot\assets\images\images\crif.in\service-2.svg" />
+    <Content Remove="wwwroot\assets\images\images\crif.in\service-3.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\ai-techiques.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-balance.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-block.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-decision.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-protect.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-recom.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\app-fraud-round-time.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\arrow-blue.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\arrow-white.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\chevron-down.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\chevron-right-double.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\circle-marker.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-com-credit-1.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-com-credit-2.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-com-credit-3.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-commercial.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-consumer.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-microfinance.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-1.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-2.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-3.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-4.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-5.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-6.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-7.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-8.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\credit-info-round-9.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-institutes.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-largest-credit-bureau.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-license.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-made-in-india.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-security.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\feature-trust.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\fraud-detection.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\globe-icon.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-analytics.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-business-info.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-business-rules.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-business.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-businessCredit.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-collections-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-cosmo.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-credit-bureau-info.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-credit-risk-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-cust-aquit.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-deduplication-platform.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-dispute.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-envelope.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-external-data-connector.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-facebook.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-faq.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-fraud.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-individual.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-info.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-instagram.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-linkedIn.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-loan-mngt.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-member.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-meter.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-payment.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-personalCredit.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-planing.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-score-meter.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-sicurnet.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-solutions.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-spy.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-support.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\icon-twitter.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\minus.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\multi-variations.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\plus.svg" />
+    <Content Remove="wwwroot\assets\images\images\icons\search-icon.svg" />
+    <Content Remove="wwwroot\assets\images\images\logo.svg" />
+    <Content Remove="wwwroot\assets\images\logo.svg" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Our.Umbraco.ConditionalDisplayers" Version="3.1.0" />
+    <PackageReference Include="Our.Umbraco.FullTextSearch" Version="3.0.0" />
+    <PackageReference Include="Umbraco.Cms" Version="10.6.1" />
+    <PackageReference Include="Umbraco.Forms" Version="10.4.0" />
+    <PackageReference Include="uSync" Version="10.6.1" />
+  </ItemGroup>
+
+  <!-- Force Windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older Windows 10 and most, if not all, Windows Server editions will run NLS -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\MacroPartials\" />
+    <Folder Include="wwwroot\assets\images\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\images\crif.in\service-1.svg" />
+    <None Include="wwwroot\assets\images\crif.in\service-2.svg" />
+    <None Include="wwwroot\assets\images\crif.in\service-3.svg" />
+    <None Include="wwwroot\assets\images\icons\ai-techiques.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-balance.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-block.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-decision.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-protect.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-recom.svg" />
+    <None Include="wwwroot\assets\images\icons\app-fraud-round-time.svg" />
+    <None Include="wwwroot\assets\images\icons\arrow-blue.svg" />
+    <None Include="wwwroot\assets\images\icons\arrow-white.svg" />
+    <None Include="wwwroot\assets\images\icons\chevron-down.svg" />
+    <None Include="wwwroot\assets\images\icons\chevron-right-double.svg" />
+    <None Include="wwwroot\assets\images\icons\circle-marker.svg" />
+    <None Include="wwwroot\assets\images\icons\comprehensive-picture.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-com-credit-1.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-com-credit-2.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-com-credit-3.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-commercial.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-consumer.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-microfinance.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-1.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-2.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-3.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-4.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-5.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-6.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-7.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-8.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-info-round-9.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-report.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-1.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-2.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-3.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-benefit-1.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-benefit-2.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-benefit-3.svg" />
+    <None Include="wwwroot\assets\images\icons\credit-score-benefit-4.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-institutes.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-largest-credit-bureau.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-license.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-made-in-india.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-security.svg" />
+    <None Include="wwwroot\assets\images\icons\feature-trust.svg" />
+    <None Include="wwwroot\assets\images\icons\fraud-detection.svg" />
+    <None Include="wwwroot\assets\images\icons\get-report-round-1.svg" />
+    <None Include="wwwroot\assets\images\icons\get-report-round-2.svg" />
+    <None Include="wwwroot\assets\images\icons\get-report-round-3.svg" />
+    <None Include="wwwroot\assets\images\icons\globe-icon.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-analytics.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-business-info.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-business-rules.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-business.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-businessCredit.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-collections-mngt.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-cosmo.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-credit-bureau-info.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-credit-risk-mngt.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-cust-aquit.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-deduplication-platform.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-dispute.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-envelope.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-external-data-connector.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-facebook.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-faq.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-fraud.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-individual.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-info.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-instagram.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-linkedIn.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-loan-mngt.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-member.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-meter.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-payment.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-personalCredit.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-planing.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-score-meter.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-sicurnet.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-solutions.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-spy.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-support.svg" />
+    <None Include="wwwroot\assets\images\icons\icon-twitter.svg" />
+    <None Include="wwwroot\assets\images\icons\minus.svg" />
+    <None Include="wwwroot\assets\images\icons\multi-variations.svg" />
+    <None Include="wwwroot\assets\images\icons\plus.svg" />
+    <None Include="wwwroot\assets\images\icons\raise-dispute.svg" />
+    <None Include="wwwroot\assets\images\icons\search-grey.svg" />
+    <None Include="wwwroot\assets\images\icons\search-icon.svg" />
+    <None Include="wwwroot\assets\images\icons\unlock-doors.svg" />
+    <None Include="wwwroot\assets\images\images\crif.in\service-1.svg" />
+    <None Include="wwwroot\assets\images\images\crif.in\service-2.svg" />
+    <None Include="wwwroot\assets\images\images\crif.in\service-3.svg" />
+    <None Include="wwwroot\assets\images\images\icons\ai-techiques.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-balance.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-block.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-decision.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-protect.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-recom.svg" />
+    <None Include="wwwroot\assets\images\images\icons\app-fraud-round-time.svg" />
+    <None Include="wwwroot\assets\images\images\icons\arrow-blue.svg" />
+    <None Include="wwwroot\assets\images\images\icons\arrow-white.svg" />
+    <None Include="wwwroot\assets\images\images\icons\chevron-down.svg" />
+    <None Include="wwwroot\assets\images\images\icons\chevron-right-double.svg" />
+    <None Include="wwwroot\assets\images\images\icons\circle-marker.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-com-credit-1.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-com-credit-2.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-com-credit-3.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-commercial.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-consumer.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-microfinance.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-1.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-2.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-3.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-4.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-5.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-6.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-7.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-8.svg" />
+    <None Include="wwwroot\assets\images\images\icons\credit-info-round-9.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-institutes.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-largest-credit-bureau.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-license.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-made-in-india.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-security.svg" />
+    <None Include="wwwroot\assets\images\images\icons\feature-trust.svg" />
+    <None Include="wwwroot\assets\images\images\icons\fraud-detection.svg" />
+    <None Include="wwwroot\assets\images\images\icons\globe-icon.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-analytics.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-business-info.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-business-rules.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-business.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-businessCredit.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-collections-mngt.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-cosmo.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-credit-bureau-info.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-credit-risk-mngt.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-cust-aquit.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-deduplication-platform.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-dispute.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-envelope.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-external-data-connector.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-facebook.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-faq.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-fraud.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-individual.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-info.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-instagram.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-linkedIn.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-loan-mngt.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-member.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-meter.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-payment.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-personalCredit.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-planing.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-score-meter.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-sicurnet.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-solutions.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-spy.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-support.svg" />
+    <None Include="wwwroot\assets\images\images\icons\icon-twitter.svg" />
+    <None Include="wwwroot\assets\images\images\icons\minus.svg" />
+    <None Include="wwwroot\assets\images\images\icons\multi-variations.svg" />
+    <None Include="wwwroot\assets\images\images\icons\plus.svg" />
+    <None Include="wwwroot\assets\images\images\icons\search-icon.svg" />
+    <None Include="wwwroot\assets\images\images\logo.svg" />
+    <None Include="wwwroot\assets\images\logo.svg" />
+  </ItemGroup>
+
+  <!-- Keep this as false if ModelsBuilder mode is InMemoryAuto -->
+  <PropertyGroup>
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" appsettings-schema_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

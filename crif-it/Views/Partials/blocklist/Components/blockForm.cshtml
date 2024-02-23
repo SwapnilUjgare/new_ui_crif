@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Crif.It.Models;
+@{
+    ContentModels.BlockForm content = (ContentModels.BlockForm)Model.Content;
+}
+
+<section class="contact-form bg pt-120 pb-120">
+    <div class="container-lg overflow-hidden">
+        @if (!content.TitoloForm.IsNullOrWhiteSpace())
+        {
+        <div class="row pt-2 pt-lg-0">
+            <div class="col-12">
+                <h2 class="h2 text-center pb-lg-5">@content.TitoloForm</h2>
+            </div>
+        </div>
+        }
+        @await Umbraco.RenderMacroAsync("renderUmbracoForm", new {FormGuid=content.Form, FormTheme=content.Theme, ExcludeScripts="1"})
+    </div>
+</section>

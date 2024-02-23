@@ -1,0 +1,490 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "Master.cshtml";
+}
+
+    <main>
+        <!--hero banner -->
+        <section class="hero-slider hero-style">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <div class="slide-bg-image d-none d-md-block" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-1.png"></div>
+                            <div class="slide-bg-image d-md-none" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-1-mob.png"></div>
+                            <div class="container">
+                                <div class="slide-title">
+                                    <h2>CreditScape Vol XII</h2>
+                                </div>
+                                <div class="slide-text">
+                                    <p>Expanding Outreach of Mass Market Lending September 2022</p>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="slide-btns">
+                                    <p>Access more such insights in <b>CRIF's CreditScape Report</b> </p>
+                                    <a href="#" class="orangeBtn d-none d-md-block">Know More</a>
+                                    <a href="#" class="arrowBtn orangeArrowBtn d-md-none">Know More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <div class="slide-bg-image d-none d-md-block" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-2.png"></div>
+                            <div class="slide-bg-image d-md-none" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-2-mob.png"></div>
+                            <div data-swiper-parallax="300" class="container">
+                                <div class="slide-title">
+                                    <h2>Your Credit Score is your gateway to better opportunities </h2>
+                                </div>
+                                <div class="slide-text">
+                                    <p>Check Your Free CRIF Credit Score Today!</p>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="slide-btns">
+                                    <a href="./credit-score.html" class="orangeBtn d-none d-md-block">Get free Score Now</a>
+                                    <a href="./credit-score.html" class="arrowBtn orangeArrowBtn d-md-none">Get free Score Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <div class="slide-bg-image d-none d-md-block" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-3.png"></div>
+                            <div class="slide-bg-image d-md-none" data-swiper-parallax="-700"
+                                data-background="images/banners/dummy-banner-3-mob.png"></div>
+                            <div data-swiper-parallax="300" class="container">
+                                <div class="slide-title">
+                                    <h2>Wish to reduce losses due to Identity Fraud?</h2>
+                                </div>
+                                <div class="slide-text">
+                                    <p>Protect your lending business against identity fraud with </p>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="slide-btns">
+                                    <a href="./application-fraud-sherlol-lending.html" class="orangeBtn d-none d-md-block">Know More</a>
+                                    <a href="./application-fraud-sherlol-lending.html" class="arrowBtn orangeArrowBtn d-md-none">Know More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end swiper-wrapper -->
+                <div class="container">
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- swipper controls -->
+                <!-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> -->
+            </div>
+        </section>
+
+        <!-- Banner Btm -->
+        <section class="py-5 lightGreyBg">
+            <div class="container">
+                <div class="row justify-content-center featuresSection">
+                    <div class="col-6 col-lg-3">
+                        <div class="iconCard">
+                            <img src="images/icons/feature-license.svg" alt="">
+                            <div>
+                                <h6 class="mb-0 iconTitle">RBI Licensed</h6>
+                                <p class="mb-0 iconInfo">Credit Bureau</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="iconCard">
+                            <img src="images/icons/feature-trust.svg" alt="">
+                            <div>
+                                <h6 class="mb-0 iconTitle">One-Stop Shop</h6>
+                                <p class="mb-0 iconInfo">For all credit related solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="iconCard mb-0">
+                            <img src="images/icons/feature-made-in-india.svg" alt="">
+                            <div>
+                                <h6 class="mb-0 iconTitle">Made in India</h6>
+                                <p class="mb-0 iconInfo">For India search algorithm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="iconCard mb-0">
+                            <img src="images/icons/feature-largest-credit-bureau.svg" alt="">
+                            <div>
+                                <h6 class="mb-0 iconTitle">Largest Credit Bureau</h6>
+                                <p class="mb-0 iconInfo">Database in India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ********* -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center px-lg-2">
+                    <div class="col-12 col-md-6 py-3 animateThis slideTop">
+                        <div class="iconCardImg boxShadow mb-0">
+                            <div class="cardBody">
+                                <img src="images/icons/icon-individual.svg" alt="" class="iconImg" />
+                                <h4 class="iconTitle colorBlue lineHeight2">Individual</h4>
+                                <p class="iconInfo mb-4">If Your Interested to Know Credit Score</p>
+                                <a href="personal-credit-score.html" class="arrowBtn">Click
+                                    here</a>
+                            </div>
+                            <div class="imgWrapper">
+                                <img src="images/bg-indiviual.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 py-3 animateThis slideTop">
+                        <div class="iconCardImg boxShadow mb-0">
+                            <div class="cardBody">
+                                <img src="images/icons/icon-business.svg" alt="" class="iconImg" />
+                                <h4 class="iconTitle colorBlue lineHeight2">Business</h4>
+                                <p class="iconInfo mb-4">If You Want to Know About Our Services</p>
+                                <a href="business-credit-score.html" class="arrowBtn">Click
+                                    here</a>
+                            </div>
+                            <div class="imgWrapper">
+                                <img src="images/bg-business.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ********* -->
+        <section class="pt-5 pb-3 whyCrifSection lightGreyBg2">
+            <div class="container pt-5 pb-3">
+                <div class="row justify-content-center text-center">
+                    <div class="col col-md-10">
+                        <h2 class="title">Why CRIF</h2>
+                        <p class="bigFont mx-auto mb-4">CRIF is a global company specializing in credit & business
+                            information systems, analytics, outsourcing and processing services, as well as advanced
+                            digital
+                            solutions for business development and open banking.</p>
+                        <a href="#" class="arrowBtn">Discover More</a>
+
+                        <div class="row counters mx-md-5 mt-5">
+                            <div class="col-12 col-md-4">
+                                <div class="counterCard">
+                                    <div class="counterNum">40</div>
+                                    <p>Country-based operations</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="counterCard">
+                                    <div class="counterNum">85</div>
+                                    <p>Subsidiary companies</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="counterCard">
+                                    <div class="counterNum">6600</div>
+                                    <p>Professionals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ************** -->
+        <section class="py-5">
+            <div class="container text-center">
+                <h2 class="title">What CRIF High Mark can do for your business</h2>
+
+                <div class="swiper-container centeredSwiper pt-3 pb-4 pb-md-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide px-2 px-sm-0">
+                            <div class="iconCard blueCard border bgWhite colorFont mb-0">
+                                <div class="d-flex justify-content-between w-100">
+                                    <h5>Customer Acquisition </h5>
+                                    <img src="images/icons/icon-cust-aquit.svg" alt="" />
+                                </div>
+                                <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </p>
+                                <a href="#" class="arrowBtn">Read More</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2 px-sm-0">
+                            <div class="iconCard blueCard border bgWhite colorFont mb-0">
+                                <div class="d-flex justify-content-between w-100">
+                                    <h5>Customer Management</h5>
+                                    <img src="images/icons/icon-support.svg" alt="" />
+                                </div>
+                                <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </p>
+                                <a href="#" class="arrowBtn">Read More</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2 px-sm-0">
+                            <div class="iconCard blueCard border bgWhite colorFont mb-0">
+                                <div class="d-flex justify-content-between w-100">
+                                    <h5>Business Planning </h5>
+                                    <img src="images/icons/icon-planing.svg" alt="" />
+                                </div>
+                                <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </p>
+                                <a href="#" class="arrowBtn">Read More</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2 px-sm-0">
+                            <div class="iconCard blueCard border bgWhite colorFont mb-0">
+                                <div class="d-flex justify-content-between w-100">
+                                    <h5>Customer Acquisition </h5>
+                                    <img src="images/icons/icon-cust-aquit.svg" alt="" />
+                                </div>
+                                <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </p>
+                                <a href="#" class="arrowBtn">Read More</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2 px-sm-0">
+                            <div class="iconCard blueCard border bgWhite colorFont mb-0">
+                                <div class="d-flex justify-content-between w-100">
+                                    <h5>Customer Management</h5>
+                                    <img src="images/icons/icon-support.svg" alt="" />
+                                </div>
+                                <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry.
+                                </p>
+                                <a href="#" class="arrowBtn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination customPagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ******* -->
+        <section class="py-5 lightGreyBg2 position-relative">
+            <div class="container" style="position: relative;z-index: 1;">
+                <div class="row">
+                    <div class="col-12 col-lg-5 pe-md-5">
+                        <h2 class="title ms-0">Reliable Count-On <br /> Credit Bureau Solutions</h2>
+                        <p>The expanse of our products is as varied as your needs. Right from information based products
+                            like credit bureau information, business information market insights, direct to consumer
+                            reports
+                            to analytics services.</p>
+                        <a href="#" class="orangeBtn mt-4">Discover More</a>
+                    </div>
+                    <div class="col col-lg-7">
+                        <div class="row pb-5">
+                            <div class="col-12 col-md-6 pt-4 pt-md-0">
+                                <div class="iconCard blueCard boxShadow animateThis slideTop mt-4 mt-lg-5 mt-xl-0">
+                                    <div class="d-flex justify-content-between w-100">
+                                        <h5 class="colorWhite">Credit Bureau Information</h5>
+                                        <img src="images/icons/icon-meter.svg" alt="" />
+                                    </div>
+                                    <p class="mb-4">As India's leading credit information solutions provider, we provide
+                                        comprehensive information solutions to banks, lenders, insurance co and telecom
+                                        operators</p>
+                                    <a href="./credit-information.html"
+                                        class="arrowBtn whiteArrowBtn">Read More</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 pt-4 pt-md-0">
+                                <div class="iconCard blueCard boxShadow animateThis slideTop mt-4 mt-lg-5">
+                                    <div class="d-flex justify-content-between w-100">
+                                        <h5 class="colorWhite">Identification and Anti-Fraud services</h5>
+                                        <img src="images/icons/icon-spy.svg" alt="" />
+                                    </div>
+                                    <p class="mb-4">Ensuring the right identity of the customer is the first step in
+                                        risk
+                                        assessment. Know Your Customer is also a need because of regulatory compliance.
+                                    </p>
+                                    <a href="./application-fraud-sherlol-lending.html"
+                                        class="arrowBtn whiteArrowBtn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blueVectorBg1 animateThis slideLeft"></div>
+            <div class="blueVectorBg2 animateThis animateDelay slideLeft "></div>
+        </section>
+
+        <!-- *********** -->
+        <section class="pt-5 pb-4 lightGreyBg2">
+            <div class="container">
+                <div class="row justify-content-center text-center serviceQuickLinks">
+                    <div class="col-12 col-sm-4 vertDivider">
+                        <div class="iconCardVert mb-0">
+                            <img src="images/icons/icon-score-meter.svg" alt="" />
+                            <h5 class="mb-0">Free Credit Score</h5>
+                            <p>Check credit score with CRIF</p>
+                            <button class="orangeBtn">Check Score</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 vertDivider">
+                        <div class="iconCardVert mb-0">
+                            <img src="images/icons/icon-payment.svg" alt="" />
+                            <h5 class="mb-0">Online Payment Portal</h5>
+                            <p>Make your payment anytime </p>
+                            <button class="orangeBtn">Pay Now</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <div class="iconCardVert mb-0">
+                            <img src="images/icons/icon-member.svg" alt="" />
+                            <h5 class="mb-0">CRIF Member?</h5>
+                            <p>Access CRIF services </p>
+                            <button class="orangeBtn">Let's Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ************ -->
+        <section class="pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="iconCardVert faqCard animateThis slideTop">
+                            <img src="images/icons/icon-faq.svg" alt="">
+                            <div class="pe-lg-5">
+                                <h4>Frequently Asked Questions</h4>
+                                <p>Having queries related to your credit report? Check our FAQs</p>
+                                <a href="./FAQs.html" class="orangeBtn mt-4">Discover
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="iconCardVert faqCard animateThis slideTop">
+                            <img src="images/icons/icon-dispute.svg" alt="">
+                            <div class="pe-lg-5">
+                                <h4>How to Raise a Dispute</h4>
+                                <p>Learn about our Consumer Grievance redressal process to raise a dispute</p>
+                                <a href="#" class="orangeBtn mt-4">Discover More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- *********** -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-7 col-lg-5">
+                        <h2 class="title ms-0">Trending Topics</h2>
+                    </div>
+                    <div class="col col-md-auto">
+                        <a href="./blogs.html" class="arrowBtn mt-4">Discover More</a>
+                    </div>
+                </div>
+                <div class="customSwiper swiper-container pb-4 pb-md-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-1.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">Unlocking Green Banking: Unraveling Carbon Footprint through
+                                        Practical Analysis</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-2.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF recognized for its open banking value-added services by
+                                        independent research firm</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-3.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF at the Arab Monetary Fund's Fintech Working Group
+                                        meeting</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-4.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF recognised as a leader in AI decisioning by global
+                                        independent
+                                        research firm</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-1.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">Unlocking Green Banking: Unraveling Carbon Footprint through
+                                        Practical Analysis</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-2.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF recognized for its open banking value-added services by
+                                        independent research firm</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-3.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF at the Arab Monetary Fund's Fintech Working Group
+                                        meeting</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide px-2">
+                            <div class="blogCard boxShadow border">
+                                <img src="images/blogs/blog-4.jpg" alt="" class="blogImg">
+                                <div class="p-3">
+                                    <small class="blogDate">29/06/2023</small>
+                                    <a class="blogTitle">CRIF recognised as a leader in AI decisioning by global
+                                        independent
+                                        research firm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination customPagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>

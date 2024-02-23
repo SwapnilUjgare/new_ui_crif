@@ -1,0 +1,61 @@
+.hero-slider {width: 100%;height: 500px;display: -webkit-box;display: -ms-flexbox;display: flex;position: relative;z-index: 0;}
+.hero-slider .swiper-slide {overflow: hidden;color: #fff;}
+.hero-slider .swiper-container {width: 100%;height: 100%;position: absolute;left: 0;top: 0;}
+.hero-slider .slide-inner {width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;text-align: left;background-color: var(--blue);}
+.hero-slider .slide-bg-image {width: 60%;height: 100%;position: absolute;right: 0;top: 0;z-index: 1;background-size: contain;background-position: right;background-repeat: no-repeat;}
+
+/* .hero-slider .swiper-button-prev,
+  .hero-slider .swiper-button-next {background: transparent;width: 55px;height: 55px;line-height: 53px;margin-top: -30px;text-align: center;border: 2px solid #d4d3d3;border-radius: 55px;opacity:0;visibility:hidden;transition:all .3s ease;}
+  .hero-slider:hover .swiper-button-prev,
+  .hero-slider:hover .swiper-button-next {transform:translateX(0);opacity:1;visibility:visible;}
+  
+  @media (max-width: 767px) {
+    .hero-slider .swiper-button-prev,.hero-slider .swiper-button-next {  display: none}}
+    
+    .hero-slider .swiper-button-prev {left: 25px;transform:translateX(50px);}
+    
+    .hero-slider .swiper-button-prev:before {font-family: "Font Awesome 5 Free";content: "\f060";font-size: 15px;color: #d4d3d3;font-style: normal;display: inline-block;vertical-align: middle;font-weight: 900;}
+    
+    .hero-slider .swiper-button-next {right: 25px;transform:translateX(-50px);}
+    
+    .hero-slider .swiper-button-next:before {font-family: "Font Awesome 5 Free";content: "\f061";font-size: 15px;color: #d4d3d3;font-style: normal;display: inline-block;vertical-align: middle;font-weight: 900;
+} */
+.hero-style .slide-title, .hero-style .slide-text, .hero-style .slide-btns {max-width: 55%;}
+.hero-style .slide-title h2 {font-size: 2.8rem;font-weight: 700;color: #ffffff;text-transform: capitalize;transition: all .4s ease;}
+.hero-style .slide-text p {font-size: 1.2rem;color: #ffffff;transition: all .4s ease;}
+.slide-btns {margin-top: 5%;}
+
+.whyCrifSection .container{
+    background-image: url('./../images/map-bg.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    background-position: center;
+}
+.whyCrifSection .bigFont{
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.4rem;
+    max-width: 1000px;
+}
+
+.blueVectorBg1{background: url('./../images/blue-rect.png') bottom right;width: 100%;height: 100%;background-repeat: no-repeat;background-size: contain;position: absolute;right: 0;top: 0;bottom: 0;}
+.blueVectorBg2{background: url('./../images/grey-rect.png') bottom right;width: 100%;height: 100%;background-repeat: no-repeat;background-size: contain;position: absolute;right: 0;top: 0;bottom: 0;}
+
+@media (max-width: 1199px) {
+    .hero-slider {height: 400px}
+    .hero-style .slide-title h2 {font-size: 2.4rem}}
+@media (max-width: 991px) {
+    .hero-slider {height: 330px}
+    .hero-style .slide-title h2 {font-size: 1.8rem}
+    .hero-style .slide-text p, .slide-btns p {font-size: 0.9rem}
+    .hero-slider .swiper-pagination-bullet {width: 15px;height: 3px;margin-right: 5px}
+    .slide-btns {margin-top: 2%}
+}
+@media (max-width: 767px) {
+    .hero-slider {height: 420px}
+    .hero-style .slide-title h2 {font-size: 1.8rem}
+    .hero-style .slide-text p, .slide-btns p {font-size: 0.95rem}
+    .hero-slider .slide-inner{align-items: flex-start; padding-top: 30px;}
+    .hero-slider .slide-bg-image{top: auto; bottom: -5px; height: 180px; width: 100%;}
+    .hero-style .slide-title, .hero-style .slide-text, .hero-style .slide-btns{max-width: 100%;}
+}

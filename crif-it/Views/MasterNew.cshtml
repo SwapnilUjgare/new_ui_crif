@@ -1,0 +1,469 @@
+﻿@using Crif.It.Utils;
+@using Crif.It.Models;
+@using System.Globalization;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models;
+@using System.Web;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+
+    CultureInfo ci = new CultureInfo(System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+
+    var cssVer = 5;
+
+    string? metaTitle = (string?)(Model.GetProperty("title")?.GetValue());
+    string? metaDescription = (string?)(Model.GetProperty("metaDescription")?.GetValue());
+    string? ogTitle = metaTitle;
+    var tmp = Model.GetProperty("openGraphTitle")?.GetValue();
+    if (!string.IsNullOrEmpty((string?)tmp))
+    {
+        ogTitle = (string)tmp;
+    }
+
+    string? ogDescription = metaDescription;
+    tmp = Model.GetProperty("openGraphDescription")?.GetValue();
+    if (!string.IsNullOrEmpty((string?)tmp))
+    {
+        ogDescription = (string)tmp;
+    }
+
+    string? robots = "INDEX, FOLLOW";
+    tmp = Model.GetProperty("metaRobots")?.GetValue();
+    if (!string.IsNullOrEmpty((string?)tmp))
+    {
+        robots = (string)tmp;
+    }
+
+    string ogImageUrl = "";
+    MediaWithCrops? ogImage = (MediaWithCrops?)Model.GetProperty("openGraphImage")?.GetValue();
+    if (ogImage != null)
+    {
+        ogImageUrl = ogImage.Url(null, UrlMode.Absolute);
+    }
+
+    MenuSettings? menuSettings = null;
+    if (Model.ContentType.Alias == "menuSettings")
+    {
+        menuSettings = (MenuSettings?)Model;
+    }
+    else
+    {
+        menuSettings = (MenuSettings?)Model.Root()?.Children()?.Where(x => x.ContentType.Alias == "menuSettings").FirstOrDefault();
+    }
+    CrifConfiguration? crifConfiguration = (CrifConfiguration?)Model.Root()?.Siblings()?.Where(x => x.ContentType.Alias == "crifConfiguration").FirstOrDefault();
+
+    IPublishedContent? searchPage = Model.Root()?.Children()?.Where(x => (x.ContentType.Alias == "searchResults"))?.FirstOrDefault();
+    string addParam = "";
+    if (Umbraco.AssignedContentItem.ContentType.Alias == "soluzione"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "family"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "category"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "mercato")
+    {
+        addParam = "product=" + HttpUtility.UrlEncode(Umbraco.AssignedContentItem.Name) + "&requestType=" + HttpUtility.UrlEncode("servizi");
+    }
+    else if (Umbraco.AssignedContentItem.ContentType.Alias == "ricerche"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "academy"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "articolo")
+    {
+        addParam = "requestType=" + HttpUtility.UrlEncode("eventi");
+    }
+    /*Tracciamenti per sezione Business*/
+    string? mercatiAssociati = "";
+    if (Umbraco.AssignedContentItem.ContentType.Alias == "mercato")
+    {
+        mercatiAssociati = (string?)Umbraco.AssignedContentItem?.Name;
+    }
+    else if (Umbraco.AssignedContentItem.ContentType.Alias == "articolo"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "articoloStorieDiSuccesso"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "soluzione"
+        || Umbraco.AssignedContentItem.ContentType.Alias == "family")
+    {
+        var mercArt = (IEnumerable<IPublishedContent>?)Model.GetProperty("mercatiDiRiferimento")?.GetValue();
+        if (mercArt != null && mercArt.Any())
+        {
+            foreach (var merc in mercArt)
+            {
+                if (mercatiAssociati == "")
+                {
+                    mercatiAssociati = merc.Name;
+                }
+                else
+                {
+                    mercatiAssociati = mercatiAssociati + "-" + merc.Name;
+                }
+            }
+        }
+    }
+}
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@metaTitle</title>
+    <meta name="description" content="@metaDescription">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:url" content="@HtmlUtils.FormatUrl(HttpContextAccessor?.HttpContext?.Request)" />
+    <meta property="og:title" content="@ogTitle" />
+    <meta property="og:description" content="@ogDescription" />
+    <meta property="og:image" content="@ogImageUrl" />
+    @foreach (var cult in Model.Cultures)
+    {
+        CultureInfo tmpCi = new CultureInfo(cult.Key);
+        <link rel="alternate" hreflang="@tmpCi.TwoLetterISOLanguageName" href="@HtmlUtils.FormatUrl(Model.Url(cult.Key, mode: UrlMode.Absolute), true)" />
+    }
+    <link rel="alternate" hreflang="x-default" href="https://www.crif.com" />
+
+    <META NAME="ROBOTS" CONTENT="@robots">
+
+    @if (Umbraco.AssignedContentItem.GetTemplateAlias() == "Decade")
+    {
+        var decades = Umbraco.AssignedContentItem.SiblingsAndSelf();
+        var latest = decades?.OrderByDescending(decades => decades.Name).FirstOrDefault();
+
+        if (Umbraco.AssignedContentItem.Id == latest?.Id)
+        {
+            var history = Umbraco.AssignedContentItem.Parent?.Url();
+            <link rel="canonical" href="@history" />
+        }
+    }
+    else if (Umbraco.AssignedContentItem.GetTemplateAlias() == "CategoriaMercato")
+    {
+        var category = Umbraco.AssignedContentItem.Parent?.Url();
+        <link rel="canonical" href="@category" />
+    }
+    else if (Context.Request.QueryString.ToString().Contains("page"))
+    {
+        <link rel="canonical" href="@HtmlUtils.FormatUrl(Model.Url(mode: UrlMode.Absolute), true)@Context.Request.QueryString" />
+    }
+    else
+    {
+        <link rel="canonical" href="@HtmlUtils.FormatUrl(Model.Url(mode: UrlMode.Absolute), true)" />
+    }
+    @if (mercatiAssociati != "")
+    {
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'pageMarket': @Html.Raw("\'" + @mercatiAssociati + "\'"),
+            })
+        </script>
+    }
+
+    @*@if (crifConfiguration != null && crifConfiguration.EnableGtm)
+    {
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', '@crifConfiguration.GtmCode');</script>
+        <!-- End Google Tag Manager -->
+    }*@
+
+    @*@if (crifConfiguration != null && crifConfiguration.EnableMatomo)
+    {
+        <!-- Matomo -->
+        <script>
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "@crifConfiguration.MatomoUrl";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '@crifConfiguration.MatomoKey']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = '//cdn.matomo.cloud/crif.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <!-- End Matomo Code -->
+    }*@
+
+    @if (crifConfiguration != null && crifConfiguration.EnableUsercentrics)
+    {
+        <script id="usercentrics-cmp"
+                src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+                data-settings-id="@crifConfiguration.UsercentricsKey" async>
+        </script>
+    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Overpass:wght@400;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- custom styles -->
+    <link href="~/assets/css/styles.css?v=@cssVer" rel="stylesheet">
+    <link href="~/assets/css/home.css?v=@cssVer" rel="stylesheet">
+
+    <!-- swiper -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    @*@if (crifConfiguration != null && crifConfiguration.EnableGtm)
+    {
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=@crifConfiguration.GtmCode"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+    }*@
+    @{
+        Home? homePage = (Home?)Umbraco.ContentAtRoot()?.FirstOrDefault();
+        bool isHome = Umbraco.AssignedContentItem.Name == "Home" ? true : false;
+    }
+    <header id="navbar">
+        <div class="container">
+            <div class="row justify-content-between align-items-center align-items-lg-end">
+                <div class="col-auto">
+                    <a title="crif-logo" href="@homePage?.Url()">
+                        <img src="~/assets/img/logo.svg" alt="crif-logo" class="logo">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="row gx-0 justify-content-end align-items-center position-relative">
+                        <ul class="col-12 topNav lineEffect text-end py-2">
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">News & Events</a></li>
+                            <li><a href="#">Consumer Grievance</a></li>
+                            <li><a href="./FAQs.html">FAQs</a></li>
+                            <li>
+                                <a href="#">WordWide <img src="images/icons/globe-icon.svg" alt="" class="globe" /></a>
+                            </li>
+                        </ul>
+                        <div class="col menuWrp mainNav text-end">
+                            <ul class="navList d-inline">
+                                <li>
+                                    <a href="./products-and-services.html">
+                                        Product and
+                                        Services
+                                    </a>
+                                </li>
+                                <li class="hasDropdown">
+                                    <a href="#">Needs</a>
+                                    <ul class="dropDown">
+                                        <li><a href="#">Customer Acquisition </a></li>
+                                        <li><a href="#">Customer Management </a></li>
+                                        <li><a href="#">Collections </a></li>
+                                        <li><a href="#">Business Planning </a></li>
+                                        <li><a href="#">Process Automation </a></li>
+                                        <li><a href="#">Due Diligence </a></li>
+                                    </ul>
+                                    <!-- <div class="row dropDown">
+                                        <div class="col-12 col-md-5 dropDownList">
+                                            <ul>
+                                                <li><a href="#">First option</a></li>
+                                                <li><a href="#">Second option</a></li>
+                                                <li><a href="#">Third option</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-12 col-md-7 dropDownCard">
+                                            <p class="mb-2">Featured</p>
+                                            <div class="iconCardImg boxShadow mb-0">
+                                                <div class="cardBody">
+                                                    <img src="images/icons/icon-individual.svg" alt=""
+                                                        class="iconImg" />
+                                                    <h4 class="iconTitle colorBlue lineHeight2">Individual</h4>
+                                                    <p class="iconInfo mb-4">If Your Interested to Know Credit Score</p>
+                                                    <a href="#" class="arrowBtn">Click here</a>
+                                                </div>
+                                                <div class="imgWrapper">
+                                                    <img src="images/bg-indiviual.png" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </li>
+                                <li class="hasDropdown">
+                                    <a href="./credit-score.html">Credit Score</a>
+                                    <ul class="dropDown">
+                                        <li>
+                                            <a href="./personal-credit-score.html">
+                                                Personal
+                                                Credit Score
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="./business-credit-score.html">
+                                                Business
+                                                Credit Score
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="hasDropdown">
+                                    <a href="#">Insights</a>
+                                    <ul class="dropDown">
+                                        <li>
+                                            <a href="./blogs.html">Blogs</a>
+                                        </li>
+                                        <li><a href="#">Reports</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">About</a></li>
+                                <li class="d-lg-none"><a href="./contact-us.html" class="orangeBtn">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-auto d-flex align-items-center pb-lg-2">
+                            @if (searchPage != null)
+                            {
+                                <span class="mx-3 mx-xl-4">
+                                    <button id="serch-lens" class="search-toggler blankBtn"><img src="~/assets/images/icons/search-icon.svg" alt=""></button>
+                                </span>
+                            }
+                            <span class="ms-2 ms-xl-3 d-none d-lg-inline">
+                                <a href="./contact-us.html" class="orangeBtn">Contact Us</a>
+                            </span>
+                            <button class="menuBtn d-lg-none">
+                                <span></span><span></span><span></span><span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @if (searchPage != null)
+    {
+        <div class="search-ovl-wrp">
+            <section class="search-ovl">
+                <div class="container-lg">
+                    <div class="search">
+                        <form action="@searchPage.Url()" method="GET">
+                            <div class="search-wrapper">
+                                <label for="search" class="form-label">@Umbraco.GetDictionaryValue("search", "Cerca")</label>
+                                <input type="text" class="form-control" id="search" name="s" placeholder="@Umbraco.GetDictionaryValue("search_label", "Cosa stai cercando" )">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    }
+
+    @RenderBody()
+
+    <footer class="">
+        <div class="bgBlue pb-0 pt-5 pb-md-5">
+            <div class="container">
+                <div class="row flex-row-reverse align-items-center py-3">
+                    <div class="col-12 col-lg-4">
+                        <div class="d-md-flex justify-content-center d-lg-block text-center text-md-start text-lg-center px-lg-5 mb-5 mb-lg-0">
+                            <img src="images/icons/icon-envelope.svg" alt="" class="" />
+                            <div class="ms-4 ms-lg-0">
+                                <h4 class="my-4 mt-md-0 mt-lg-3 colorWhite footerTitle">How may we assist you?</h4>
+                                <a href="./contact-us.html"
+                                   class="orangeBtn whiteBorder mt-lg-4 mx-auto mx-md-0 mx-lg-auto">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-8">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="footerLinks lineEffect">
+                                    <h5 class="colorWhite my-2 mb-md-4">Important Links</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="./products-and-services.html">
+                                                Product
+                                                and Services
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="./personal-credit-score.html">
+                                                Personal
+                                                Credit Score
+                                            </a>
+                                        </li>
+                                        <li><a href="./business-credit-score.html">Business Credit Score</a></li>
+                                        <li><a href="#">Reports</a></li>
+                                        <li><a href="./blogs.html">Blogs and Updates</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="footerLinks lineEffect">
+                                    <h5 class="colorWhite my-2 mb-md-4">Business Needs</h5>
+                                    <ul>
+                                        <li><a href="#">Customer Acquisition</a></li>
+                                        <li><a href="#">Customer Management</a></li>
+                                        <li><a href="#">Collections</a></li>
+                                        <li><a href="#">Business Planning</a></li>
+                                        <li><a href="#">Process Automation</a></li>
+                                        <li><a href="#">Due Diligence</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="footerLinks lineEffect">
+                                    <h5 class="colorWhite my-2 mb-md-4">More Information</h5>
+                                    <ul>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Careers</a></li>
+                                        <li><a href="#">News & Events</a></li>
+                                        <li><a href="./FAQs.html">FAQ’s</a></li>
+                                        <li><a href="./contact-us.html">Contact Us</a></li>
+                                        <li><a href="#">Consumer Grievance</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="py-4">
+            <div class="container">
+                <div class="row justify-content-between align-items-center text-center text-md-start">
+                    <div class="col-12 col-md-6">
+                        <img src="images/logo.svg" alt="" class="footerLogo" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="socialLinks">
+                            <span>Follow us on:</span>
+                            <ul class="ms-2">
+                                <li><a href="#"><img src="images/icons/icon-facebook.svg" alt="" /></a></li>
+                                <li><a href="#"><img src="images/icons/icon-twitter.svg" alt="" /></a></li>
+                                <li><a href="#"><img src="images/icons/icon-instagram.svg" alt="" /></a></li>
+                                <li><a href="#"><img src="images/icons/icon-linkedIn.svg" alt="" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 extraLinks justify-content-start">
+                        <span>© Copyright <span id="footerYear"></span> - CRIF High Mark. All rights reserved</span>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="extraLinks">
+                            <ul class="lineEffect">
+                                <li><a href="#">SUIT FILED CASES</a></li>
+                                <li><a href="#">RBI Notifications</a></li>
+                                <li><a href="#">Cersai</a></li>
+                                <li><a href="#">sitemap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script src="~/assets/script/script.js?v=@cssVer"></script>
+</body>
+
+
+</html>

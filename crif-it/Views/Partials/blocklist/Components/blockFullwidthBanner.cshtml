@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Crif.It.Models;
+@using Crif.It.Utils;
+@{
+    ContentModels.BlockFullwidthBanner? content = (ContentModels.BlockFullwidthBanner?)Model.Content;
+    ContentModels.BlockGeneralBlockSettings? settings = (ContentModels.BlockGeneralBlockSettings?)Model.Settings;
+}
+<section class="blue-hero" data-section="full-width-banner" id="@settings?.AnchorID">
+    <div class="container-lg h-100">
+        <div class="row h-100">
+            <div class="col-12 banner">
+                <div class="img-wrapper">
+                    <img src="@content?.Image?.Url()" alt="@HtmlUtils.GetImageAlt(content?.Image)">
+                </div>
+                <div class="caption">
+                    @if (!string.IsNullOrEmpty(content?.Title))
+                    {
+                        <h2 class="h2 white pb-2 pb-lg4">@content?.Title</h2>
+                    }
+                    @Html.Raw(content?.Text)
+                    <a title="@content?.CallToAction?.Name" href="@content?.CallToAction?.Url" class="more d-inline" data-link-type="cta" data-link="@content?.CallToAction?.Name" data-link-destination="@content?.CallToAction?.Url" data-link-section="@content?.Title">@content?.CallToAction?.Name</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
